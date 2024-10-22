@@ -12,27 +12,26 @@ const VapiButton = ({
       : callStatus === CALL_STATUS.LOADING
       ? "orange"
       : "green";
+
   const buttonStyle = {
     borderRadius: "50%",
-    width: "50px",
-    height: "50px",
+    width: "5rem",
+    height: "5rem",
     color: "white",
     border: "none",
-    boxShadow: `1px 1px ${10 + audioLevel * 40}px ${
-      audioLevel * 10
-    }px ${color}`,
+    boxShadow: `0px 0px ${5 + audioLevel * 10}px ${audioLevel * 2}px ${color}`,
     cursor: "pointer",
   };
 
   return (
     <button
       style={buttonStyle}
-      className={`transition ease-in-out ${
+      className={`transition-transform duration-200 ease-in-out transform hover:scale-110 ${
         callStatus === CALL_STATUS.ACTIVE
           ? "bg-red-500 hover:bg-red-700"
           : callStatus === CALL_STATUS.LOADING
           ? "bg-orange-500 hover:bg-orange-700"
-          : "bg-green-500 hover:bg-green-700"
+          : "bg-green-500 hover:bg-green-700 wobble"
       } flex items-center justify-center`}
       onClick={toggleCall}
     >

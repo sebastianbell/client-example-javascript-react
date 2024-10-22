@@ -10,16 +10,17 @@ interface ConversationMessageProps {
 export function ConversationMessage({ message }: ConversationMessageProps) {
   return (
     <div
-      className={`flex w-4/5 text-sm mb-4 justify-end text-[#1a0400] font-medium ${
-        message.role == MessageRoleEnum.USER ? "ml-auto" : "mr-auto"
+      className={`flex w-full text-sm mb-6 font-medium ${
+        message.role == MessageRoleEnum.USER ? "justify-end" : "justify-start"
       }`}
     >
       <div
-        className={`p-3 ${
+        className={`p-6 shadow-lg ${
           message.role !== MessageRoleEnum.USER
-            ? "rounded-r-xl bg-blue-200 mr-auto"
-            : "rounded-l-xl bg-orange-100 ml-auto"
-        } rounded-t-xl`}
+            ? "rounded-2xl bg-teal-200 text-teal-800" // Assistant
+            : "rounded-2xl bg-orange-100 text-orange-800" // User
+        }`}
+        style={{ maxWidth: "75%" }}
       >
         <p className="leading-relaxed">{message.transcript}</p>
       </div>

@@ -26,42 +26,41 @@ function App() {
   });
 
   return (
-    <main className="flex h-screen">
-      <CharacterPreview />
-      <div
-        id="card"
-        className="text-slate-950 dark:text-slate-50 w-full relative"
-      >
-        {/* <div
-          id="card-header"
-          className="flex flex-col space-y-1.5 p-6 shadow pb-4"
-        ></div> */}
-        <div id="card-content" className="p-6 pt-0">
-          <ScrollArea
-            ref={scrollAreaRef}
-            viewportRef={viewportRef}
-            className="h-[90vh] flex flex-1 p-4"
-          >
-            <div className="flex flex-1 flex-col min-h-[85vh] justify-end">
-              <MessageList
-                messages={messages}
-                activeTranscript={activeTranscript}
-              />
-            </div>
-          </ScrollArea>
+    <div className="bg-recipe-helper bg-cover bg-center bg-no-repeat min-h-screen flex items-center justify-center">
+      <div className="absolute inset-0 bg-gradient-to-b backdrop-blur-sm from-black/20 to-black/30 z-0"></div>
+      <main className="relative flex max-w-6xl w-full h-[80vh] p-6 bg-white/80 rounded-lg shadow-lg z-10">
+        <div className="w-1/3 pr-6 flex flex-col items-center">
+          <CharacterPreview />
+          <div className="mt-8">
+            <VapiButton
+              audioLevel={audioLevel}
+              callStatus={callStatus}
+              toggleCall={toggleCall}
+            />
+          </div>
         </div>
+
         <div
-          id="card-footer"
-          className="flex justify-center absolute bottom-0 left-0 right-0 py-4"
+          id="card"
+          className="text-slate-950 dark:text-slate-50 w-2/3 max-w-3xl"
         >
-          <VapiButton
-            audioLevel={audioLevel}
-            callStatus={callStatus}
-            toggleCall={toggleCall}
-          />
+          <div id="card-content" className="p-4">
+            <ScrollArea
+              ref={scrollAreaRef}
+              viewportRef={viewportRef}
+              className="h-[72vh] flex flex-1 p-4"
+            >
+              <div className="flex flex-1 flex-col min-h-[65vh] justify-end">
+                <MessageList
+                  messages={messages}
+                  activeTranscript={activeTranscript}
+                />
+              </div>
+            </ScrollArea>
+          </div>
         </div>
-      </div>
-    </main>
+      </main>
+    </div>
   );
 }
 
